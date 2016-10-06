@@ -2,7 +2,7 @@
 
 This extension lets you use Mousetrap to record keyboard sequences and play them back.
 
-This is a node module (works in node/electron or with something like browserify). For original plugin see (this repo)[https://github.com/ccampbell/mousetrap/tree/master/plugins/record]
+This is a node module (works in node/electron or with something like browserify). For original plugin see [this repo](https://github.com/ccampbell/mousetrap/tree/master/plugins/record)
 
 ## Installation
 

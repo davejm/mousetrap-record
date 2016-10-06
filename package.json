@@ -1,0 +1,24 @@
+{
+  "name": "mousetrap-record",
+  "version": "1.0.0",
+  "description": "This extension allows you to record a keyboard sequence using Mousetrap.",
+  "main": "mousetrap-record.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davejm/mousetrap-record.git"
+  },
+  "keywords": [
+    "Mousetrap",
+    "Keyboard",
+    "Record"
+  ],
+  "author": "Dan Tao <daniel.tao@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/davejm/mousetrap-record/issues"
+  },
+  "homepage": "https://github.com/davejm/mousetrap-record#readme"
+}

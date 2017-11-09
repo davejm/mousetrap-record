@@ -30,3 +30,15 @@ var Mousetrap = require('mousetrap-record')(require('mousetrap'));
     }
 </script>
 ```
+
+If necessary, it's possible to change the default record timeout of 1000ms:
+
+```js
+// at initialize
+var Mousetrap = require('mousetrap-record')(require('mousetrap'), { timeout: 250 });
+
+// or at record call
+Mousetrap.record(function(sequence) {
+    console.log('You pressed: ' + sequence.join(' '));
+}, 3000);
+```

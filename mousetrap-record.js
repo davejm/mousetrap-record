@@ -5,7 +5,15 @@
  *
  * @author Dan Tao <daniel.tao@gmail.com>
  */
-module.exports = function (Mousetrap) {
+module.exports = function (Mousetrap, options) {
+    /**
+     * the default configurations, we merge with user options
+     *
+     * @type {Array}
+     */
+    var _config = Object.assign({
+        timeout: 1000
+    }, options);
 
     /**
      * the sequence currently being recorded
@@ -49,7 +57,14 @@ module.exports = function (Mousetrap) {
          *
          * @type {Function}
          */
-        _origHandleKey = Mousetrap.prototype.handleKey;
+        _origHandleKey = Mousetrap.prototype.handleKey,
+
+        /**
+         * the timeout that timer will wait for a key
+         *
+         * @type {number}
+         */
+        _recordTimeout = _config.timeout;
 
     /**
      * handles a character key event
@@ -179,7 +194,7 @@ module.exports = function (Mousetrap) {
      */
     function _restartRecordTimer() {
         clearTimeout(_recordTimer);
-        _recordTimer = setTimeout(_finishRecording, 1000);
+        _recordTimer = setTimeout(_finishRecording, _recordTimeout);
     }
 
     /**
@@ -189,9 +204,14 @@ module.exports = function (Mousetrap) {
      * @param {Function} callback
      * @returns void
      */
-    Mousetrap.prototype.record = function(callback) {
+    Mousetrap.prototype.record = function(callback, timeout) {
         var self = this;
         self.recording = true;
+
+        // if the user doesn't want to change the timeout
+        // we still need to guarantee that it gets the default timeout
+        _recordTimeout = timeout || _config.timeout;
+
         _recordedSequenceCallback = function() {
             self.recording = false;
             callback.apply(self, arguments);
